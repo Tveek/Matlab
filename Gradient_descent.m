@@ -14,7 +14,7 @@ function theta=Gradient_descent(X,Y)
         theta1=theta1-0.000001*t1;  
         t0=0;  
         t1=0;  
-        if(sqrt((old_theta0-theta0)^2+(old_theta1-theta1)^2)<0.000001) % 这里是判断收敛的条件，当然可以有其他方法来做  0.000001
+        if(sqrt((old_theta0-theta0)^2+(old_theta1-theta1)^2)<0.0001) % 这里是判断收敛的条件，当然可以有其他方法来做  0.000001
             break;  
         end 
         theta(1,1)=theta0;
