@@ -3,8 +3,8 @@ Y=[0:1:99]';
 X=X+rand(100,1)*20;
 plot(X,Y,'.');
 hold on;
-temp1=normal_equation(X,Y);
-temp2=Gradient_descent(X,Y);
+temp1=Newton_Method(X,Y);
+temp2=normal_equation(X,Y);
 x=0:5:150;%¸ø¶¨x·¶Î§
 k1=temp1(2,1);
 b1=temp1(1,1)
