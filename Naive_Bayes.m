@@ -51,10 +51,10 @@ prob_tokens_nonspam = (wc_nonspam + 1) ./ (sum(wc_nonspam) + numTokens);
 test_labels = dlmread('ex6DataPrepared\test-labels.txt');
 
 M = dlmread('ex6DataPrepared\test-features.txt', '');
+
 % 构建稀疏矩阵，这么貌似有个问题，如果测试文档中不含有第2500个词的话，构建出的稀疏矩阵列数不是numTokens
 % 下面的test_matrix乘于训练出来的(log(spam_wc_proc))'就肯定会出错
 spmatrix = sparse(M(:,1), M(:,2), M(:,3));
-
 test_matrix = full(spmatrix);
 
 % 分别计算test_matrix的每一行即每篇文档属于垃圾邮件和非垃圾邮件的概率,最终还是以词语出现的频次*词语概率（通过先前数据训练得到） 
