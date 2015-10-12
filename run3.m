@@ -4,7 +4,7 @@ z=[0:1:99]';
 
 plot3(x,y,z,'y');
 
-plot3(x,y,z,'r');
+
 
 hold on;
 x=x+rand(100,1)*10;%x方向增加噪声
