@@ -24,7 +24,9 @@ TestImage = strcat(TestDatabasePath,'\',char(TestImage),'.jpg');
 im = imread(TestImage); 
 
 T = CreateDatabase(TrainDatabasePath);
+Meanface( T);
 [m, A, Eigenfaces] = EigenfaceCore(T);
+ 
 OutputName = Recognition(TestImage, m, A, Eigenfaces);
 
 figure;SelectedImage = strcat(TrainDatabasePath,'\',OutputName);

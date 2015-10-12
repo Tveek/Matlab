@@ -14,7 +14,7 @@ function OutputName = Recognition(TestImage, m, A, Eigenfaces)
 %                                         database, which is output of 'EigenfaceCore' function.
 %
 %                A                      - (M*NxP) Matrix of centered image
-%                                         vectors, which is output of 'EigenfaceCore' function.
+%                                         vectors, which i0   s output of 'EigenfaceCore' function.
 % 
 % Returns:       OutputName             - Name of the recognized image in the training database.
 %
@@ -38,6 +38,7 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%% Extracting the PCA features from test image
 InputImage = imread(TestImage);
+
 temp = InputImage(:,:,1);
 
 [irow icol] = size(temp);
@@ -53,6 +54,7 @@ ProjectedTestImage = Eigenfaces'*Difference; % Test image feature vector½«´ý²âÑù
 % training database.
 
 Euc_dist = [];
+
 for i = 1 : Train_Number
     q = ProjectedImages(:,i);
     temp = ( norm( ProjectedTestImage - q ) )^2;

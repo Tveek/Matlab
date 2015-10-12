@@ -1,0 +1,11 @@
+function [ output_args ] = Meanface( Eigenfaces)
+%MEANFACE Summary of this function goes here
+%   Detailed explanation goes here
+m=mean(Eigenfaces,2);
+m
+face=reshape(m,200,180);
+figure
+imshow(face);
+output_args=0;
+end
+

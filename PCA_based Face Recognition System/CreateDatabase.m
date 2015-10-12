@@ -41,6 +41,7 @@ for i = 1 : Train_Number
     str = strcat(TrainDatabasePath,str);
     
     img = imread(str);
+  
     img = rgb2gray(img);
     
     [irow icol] = size(img);
