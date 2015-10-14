@@ -16,7 +16,7 @@ for i=1:MAX_ITR
     % Jtheta = 0.07/m*sum(x*theta-y).^2); 计算代价
     grad = 1/m*x'*(x*theta-y); %计算梯度
     prev_theta = theta;
-    theta = theta - alpha*grad;
+    theta = theta - alpha*grad; 
     if abs(prev_theta-theta)<ERROR
         break
     end

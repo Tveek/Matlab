@@ -11,7 +11,7 @@ numpatches = 10000;
 % column per patch, 10000 columns. 
 patches = zeros(patchsize*patchsize, numpatches);
 
-%% ---------- YOUR CODE HERE --------------------------------------
+% ---------- YOUR CODE HERE --------------------------------------
 %  Instructions: Fill in the variable called "patches" using data 
 %  from IMAGES.  
 %  
@@ -24,14 +24,11 @@ patches = zeros(patchsize*patchsize, numpatches);
 %  patch corresponding to the pixels in the block (21,21) to (30,30) of
 %  Image 1
 
-for imageNum = 1:10%在每张图片中随机选取1000个patch，共10000个patch
-    [rowNum colNum] = size(IMAGES(:,:,imageNum));
-    for patchNum = 1:1000%实现每张图片选取1000个patch
-        xPos = randi([1,rowNum-patchsize+1]);
-        yPos = randi([1, colNum-patchsize+1]);
-        patches(:,(imageNum-1)*1000+patchNum) = reshape(IMAGES(xPos:xPos+7,yPos:yPos+7,...
-                                                        imageNum),64,1);
-    end
+image_size = size(IMAGES); %图像大小  
+for i=1:numpatches  
+    x = randi(image_size(1) - patchsize); %随机得到patch的最小x坐标  
+    y = randi(image_size(2) - patchsize); %随机得到patch的最小y坐标  
+    patches(:,i) = reshape(IMAGES(x:x+patchsize-1,y:y+patchsize-1,randi(image_size(3))),patchsize*patchsize,1); %随机选择一个张图片用上面得到坐标进行sample得到patch  
 end
 
 
@@ -41,7 +38,7 @@ end
 
 
 
-%% ---------------------------------------------------------------
+% ---------------------------------------------------------------
 % For the autoencoder to work well we need to normalize the data
 % Specifically, since the output of the network is bounded between [0,1]
 % (due to the sigmoid activation function), we have to make sure 
@@ -51,7 +48,7 @@ patches = normalizeData(patches);
 end
 
 
-%% ---------------------------------------------------------------
+% ---------------------------------------------------------------
 function patches = normalizeData(patches)
 
 % Squash data to [0.1, 0.9] since we use sigmoid as the activation
