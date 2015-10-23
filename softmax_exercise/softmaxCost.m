@@ -12,6 +12,7 @@ function [cost, grad] = softmaxCost(theta, numClasses, inputSize, lambda, data, 
 theta = reshape(theta, numClasses, inputSize);
 
 numCases = size(data, 2);
+%下面求得这个东东就是指示函数：1·{}
 groundTruth = full(sparse(labels, 1:numCases, 1));%such that M(r, c) is 1 if y(c) = r and 0 otherwise(讲义中的一句话).
 cost = 0;
 
@@ -25,8 +26,10 @@ M=theta*data;
 % M is the matrix as described in the text
 M = bsxfun(@minus, M, max(M, [], 1));
 E=exp(M);
-H=bsxfun(@rdivide, E, sum(E));
+
+h=bsxfun(@rdivide, E, sum(E));
 cost = -1/numCases*sum(sum(groundTruth.*log(h)))+lambda/2*sum(sum(theta.^2));
+
 thetagrad = -1/numCases*((groundTruth-h)*data')+lambda*theta;
 
 
