@@ -99,3 +99,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+minFunc/ArmijoBacktrack.m
+minFunc/autoGrad.m
+minFunc/autoGrad.m
+minFunc/autoHess.m
+minFunc/autoTensor.m
+minFunc/conjGrad.m
+minFunc/dampedUpdate.m
+minFunc/example_minFunc.m
+*.m

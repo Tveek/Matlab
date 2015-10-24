@@ -14,6 +14,7 @@ pred = zeros(1, size(data, 2));
 %% ---------- YOUR CODE HERE --------------------------------------
 %  Instructions: Compute pred using theta assuming that the labels start 
 %                from 1.
+[nop, pred] = max(theta * data);%nop为每列的最大值，pred为每列最大值的下标；theta * data是一个10*10000的矩阵。
 
 
 
